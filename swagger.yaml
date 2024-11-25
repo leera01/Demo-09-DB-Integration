@@ -136,7 +136,7 @@ components:
       properties:
         name:
           type: string
-        isdone:
+        isDone:
           type: boolean
     TaskGetResponse:
       type: object
@@ -145,9 +145,9 @@ components:
           type: integer
         name:
           type: string
-        isdone:
+        isDone:
           type: boolean
       example:
         name: name
         id: 0
-        isdone: true
+        isDone: true
