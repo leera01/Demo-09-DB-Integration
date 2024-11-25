@@ -1,0 +1,219 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "PRIN135-Demo-10-OpenAPI",
+    "version": "1.0",
+    "description": "Contains REST endpoints of PRIN135-Demo-10",
+    "contact": {
+      "email": "rlee@ceu.edu.ph",
+      "name": "Ralph Lee"
+    }
+  },
+  "externalDocs": {
+    "url": "swagger.json",
+    "description": "swagger.json"
+  },
+  "servers": [
+    {
+      "url": "https://demo-09-db-integration.vercel.app",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/tasks": {
+      "get": {
+        "summary": "Returns all tasks.",
+        "description": "Returns all tasks.",
+        "operationId": "",
+        "responses": {
+          "200": {
+            "description": "Tasks Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TaskGetResponse"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Task not found"
+          }
+        },
+        "tags": [
+          "Tasks"
+        ]
+      },
+      "post": {
+        "summary": "Creates a task.",
+        "description": "Creates a task.",
+        "operationId": "",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Task created"
+          }
+        },
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
+    "/tasks/{id}": {
+      "get": {
+        "summary": "Returns a task by specified id.",
+        "description": "Returns a task by specified id.",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskGetResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Task not found"
+          }
+        },
+        "tags": [
+          "Tasks"
+        ]
+      },
+      "put": {
+        "summary": "Updates a task by specified id.",
+        "description": "Updates a task by specified id.",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskGetResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Task not found"
+          }
+        },
+        "tags": [
+          "Tasks"
+        ]
+      },
+      "delete": {
+        "summary": "Deletes a task by specified id.",
+        "description": "Deletes a task by specified id.",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task deleted"
+          },
+          "404": {
+            "description": "Task not found"
+          }
+        },
+        "tags": [
+          "Tasks"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TaskCreateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "TaskUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "isdone": {
+            "type": "boolean"
+          }
+        }
+      },
+      "TaskGetResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isdone": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

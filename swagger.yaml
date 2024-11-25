@@ -6,6 +6,9 @@ info:
     name: Ralph Lee
     email: rlee@ceu.edu.ph
   version: "1.0"
+externalDocs:
+  url: swagger.json
+  description: swagger.json
 servers:
 - url: https://demo-09-db-integration.vercel.app
 - url: https://demo-09-db-integration-git-open-api-leera01s-projects.vercel.app
