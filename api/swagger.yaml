@@ -8,7 +8,6 @@ info:
   version: "1.0"
 servers:
 - url: https://demo-09-db-integration.vercel.app
-- url: http://localhost:3000/
 paths:
   /tasks:
     get:
