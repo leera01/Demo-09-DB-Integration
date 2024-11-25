@@ -6,10 +6,10 @@ const swaggerUi = require('swagger-ui-express');
 const fs = require('fs')
 const YAML = require('yaml')
 
-const file  = fs.readFileSync('./api/swagger.yaml', 'utf8')
+const file  = fs.readFileSync('swagger.yaml', 'utf8')
 const swaggerDocument = YAML.parse(file)
 
-//app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // enable middleware to parse body of Content-type: application/json
 app.use(express.json());
