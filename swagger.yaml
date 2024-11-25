@@ -8,6 +8,7 @@ info:
   version: "1.0"
 servers:
 - url: https://demo-09-db-integration.vercel.app
+- url: https://demo-09-db-integration-git-open-api-leera01s-projects.vercel.app
 paths:
   /tasks:
     get:
