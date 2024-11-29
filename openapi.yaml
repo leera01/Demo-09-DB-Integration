@@ -13,6 +13,9 @@ servers:
   - url: https://demo-09-db-integration.vercel.app
     variables: {}
     description: Production
+  - url: https://demo-09-db-integration-git-api-document-01-leera01s-projects.vercel.app
+    variables: {}
+    description: Preview
 paths:
   /tasks:
     summary: Tasks base path.
