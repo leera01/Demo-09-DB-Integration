@@ -9,6 +9,7 @@ const yamlFile = fs.readFileSync(process.cwd() + '/openapi.yaml', 'utf8');
 const YAML = require('yaml');
 const swaggerDocument = YAML.parse(yamlFile);
 
+const swaggerUi = require('swagger-ui-express');
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {
 	customCss:
 		'.swagger-ui .opblock .opblock-summary-path-description-wrapper { align-items: center; display: flex; flex-wrap: wrap; gap: 0 10px; padding: 0 10px; width: 100%; }',
