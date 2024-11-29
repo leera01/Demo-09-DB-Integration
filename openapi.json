@@ -1,0 +1,213 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PRIN144-Demo-10-API-Documentation",
+    "version": "1.0",
+    "description": "API Documentation for Task Activity",
+    "contact": {
+      "email": "johndoe@email.com",
+      "name": "John Doe"
+    }
+  },
+  "externalDocs": {
+    "url": "openapi.json",
+    "description": "API Collection for PostMan import."
+  },
+  "servers": [
+    {
+      "url": "https://demo-09-db-integration.vercel.app/",
+      "variables": {},
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/tasks": {
+      "summary": "Tasks base path.",
+      "description": "Tasks base path.",
+      "get": {
+        "summary": "Returns all tasks.",
+        "description": "Returns all tasks.",
+        "operationId": "GetAllTasks",
+        "responses": {
+          "200": {
+            "description": "Tasks found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TaskGetResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tasks"
+        ]
+      },
+      "post": {
+        "summary": "Create a task.",
+        "description": "Create a task.",
+        "operationId": "CreateTask",
+        "requestBody": {
+          "description": "To create task, add values to request body.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Task created."
+          }
+        },
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
+    "/tasks/{taskID}": {
+      "summary": "Tasks base path with taskID.",
+      "description": "Tasks base path with taskID.",
+      "get": {
+        "summary": "Returns a task by TaskID.",
+        "description": "Returns a task by TaskID.",
+        "operationId": "GetTask",
+        "responses": {
+          "200": {
+            "description": "Task found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskGetResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Task not found."
+          }
+        },
+        "tags": [
+          "Tasks"
+        ]
+      },
+      "put": {
+        "summary": "Updates a tasks by TaskID.",
+        "description": "Updates a tasks by TaskID.",
+        "operationId": "UpdateTask",
+        "requestBody": {
+          "description": "To update a task, add values to request body.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskUpdateResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Task not found."
+          }
+        },
+        "tags": [
+          "Tasks"
+        ]
+      },
+      "delete": {
+        "summary": "Deletes a tasks by TaskID.",
+        "description": "Deletes a tasks by TaskID.",
+        "operationId": "DeleteTask",
+        "responses": {
+          "200": {
+            "description": "Task deleted."
+          },
+          "404": {
+            "description": "Task not found."
+          }
+        },
+        "tags": [
+          "Tasks"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "taskID",
+          "in": "path",
+          "description": "Task ID",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "TaskCreateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "TaskUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "isdone": {
+            "type": "boolean"
+          }
+        }
+      },
+      "TaskGetResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isdone": {
+            "type": "boolean"
+          }
+        }
+      },
+      "TaskUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isdone": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
